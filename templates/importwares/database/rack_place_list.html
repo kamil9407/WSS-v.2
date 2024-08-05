@@ -1,0 +1,40 @@
+{% extends 'importwares/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Rack Places</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">List of pallet places</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Place ID</th>
+                    <th>Is Occupied</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rack in racks %}
+                <tr>
+                    <td>{{ rack.id }}</td>
+                    <td>{{ rack.rid }}</td>
+                    <td>{{ rack.is_occupied|yesno:"Yes,No" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No rack places available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

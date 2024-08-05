@@ -1,0 +1,28 @@
+{% extends 'importwares/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Add to rack</title>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <h2>Add to rack</h2>
+            <div class="container mt-4">   
+                <form method="POST" action="{% url 'add_to_rack' %}">
+                    {% csrf_token %}
+                    <label for="rack_id">Rack ID:</label>
+                    <input type="text" id="rack_id" name="rack_id" required>
+                    <br>
+                    <label for="pid">Pallet ID:</label>
+                    <input type="text" id="pid" name="pid" required>
+                    <br>
+                    <button type="submit">Assign Pallet</button>
+                </form>
+            </div>
+        </div>
+    </body>
+
+</html>
+{% endblock %}

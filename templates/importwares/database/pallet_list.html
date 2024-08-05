@@ -1,0 +1,39 @@
+{% extends 'importwares/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pallet list</title>
+</head>
+<body>
+    
+    <div class="container my-4">
+      <h1 class="text-center mb-4">Pallet list</h1>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for pallet in pallets %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ cargo.image.url }}" class="card-img-top" alt="{{ cargo.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pallet.cargo }}</h5>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item"><p>Quantity: </p>{{pallet.quantity}}<p>pcs</p></li>
+                          <li class="list-group-item"><p>PID: </p>{{pallet.pid}}</li>
+                          <li class="list-group-item"><p>Unit weight: </p>{{pallet.cargo.unit_weight}}<p>kg</p></li>
+                          <li class="list-group-item"><p>Total weight: </p>{{pallet.total_weight}}<p>kg</p></li>
+                          
+                        </ul>   
+                    </div>
+                    
+                </div>
+            </div>
+        {% endfor %}  
+        
+        </ul>
+      </div>
+    </div>
+    
+</body>
+</html>
+{% endblock %}

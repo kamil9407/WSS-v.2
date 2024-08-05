@@ -1,0 +1,26 @@
+{% extends 'importwares/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Cargo detail</title>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h2>{{ cargo.name }}</h2>
+            <p>EAN: {{ cargo.ean }}</p>
+            <p>Quantity: {{ cargo.quantity }} pcs</p>
+            <p>Buy Price: {{ cargo.buy_price }} $</p>
+            <p>Sell Price: {{ cargo.sell_price }} $</p>
+            <p>Unit Weight: {{ cargo.unit_weight }} kg</p>
+            <p>Supplier: {{ cargo.supplier }}</p>
+            <p>Category: {{ cargo.category }}</p>
+            <img src="{{ cargo.image.url }}" alt="{{ cargo.name }}">
+            <p>Description: {{ cargo.description }}</p>
+            <br>
+            <a href="{% url 'update_cargo' cargo.sku %}" class="btn btn-warning">Update</a>
+        </div>
+    </body>
+</html>
+{% endblock %}

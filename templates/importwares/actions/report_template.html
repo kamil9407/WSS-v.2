@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>Report of {{title}}</h1>
+    <p>ID: {{ data.id }}</p>
+    <p>Name: {{ data.name }}</p>
+    <p>Description: {{ data.description }}</p>
+    <p>Supplier: {{ data.supplier }}</p>
+    <p>EAN: {{ data.ean }}</p>
+    <p>SKU: {{ware.sku}}</p>
+    <p>Quantity: {{ data.quantity }} pcs</p>
+    <p>Buy Price: {{ data.buy_price }} $</p>
+    <p>Sell Price: {{ data.sell_price }} $</p>
+    <p>Unit Weight: {{ data.unit_weight }} kg</p>
+    <p>Image: <img src="{{ data.image.url }}" alt="{{ data.name }}" class="img-fluid"></p>
+    <p>Date: {{ data.date }}</p>
+    <p>Receiver: BS Warehousing, 24-555 Miaki, Graniczna 44, Poland</p>
+</body>
+</html>

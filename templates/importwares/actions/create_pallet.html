@@ -1,0 +1,27 @@
+{% extends 'importwares/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Create Warehouse Pallet</title>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <h2>Create Warehouse Pallet</h2>
+            <form method="post" class="row g-3" enctype = "multipart/form-data">
+                <div class="card" style="width: auto;">
+                    <br>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="card-body">
+                      
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>
+{% endblock %}

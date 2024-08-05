@@ -1,0 +1,57 @@
+#Zadanie: Popraw dodawanie palet do raków. 
+Jeżeli paleta znajdzie się w raku to ma być niedostępna do kolejnych 
+przypisań.
+
+Problem: rekurencja w is_occupied i assigned. Rozwiązanie: rozdzielenie logiki
+Wytłumaczenie: 
+W metodzie save w RackPlace:
+Przeniosłem super().save(*args, **kwargs) przed aktualizację stanu is_occupied i pallet_code.is_assigned.
+Użyłem update_fields=['is_assigned'] przy zapisywaniu pallet_code, 
+aby uniknąć pełnego zapisu obiektu, co może potencjalnie wywołać dodatkowe 
+operacje i uniknąć rekurencji.
+
+Zadanie: Przypisać paletę do miejsca w regale
+
+Założenia:
+Model Palety(WarehousePallet):
+- nr identyfikacyjny(pid)
+- towar na palecie (cargo)
+- ilość towaru na palecie (quantity)
+- jednostkowa waga towaru na palecie (u_weight)
+- sumaryczna waga towaru na palecie(total_weight)
+
+Model przypisanej palety (PalletAssignation):
+- paleta do przypisania(pallet)
+- status przypisania (is_assigned)
+Uwagi: Model stanowi pierwszą połowę przypisania palety do regału, którą jest 
+nadanie palecie statusu gotowości do przypisania (is_assigned)
+Po wypełnieniu formularza użytkownik zostaje przekierowany do strony,
+gdzie przypisuje oznaczoną paletę do wybranego miejsca paletowego na regale.
+
+Model kodu miejsca paletowego w regale (PalletPlace):
+- kod identyfikacyjny miejsca w regale (rid)
+Uwagi: miejsca uzupełniane są przez admina
+
+Model miejsca paletowego w regale (RackPlace):
+- kod zaimportowany z modelu PalletPlace(place_id = rid)
+- status zajętości (is_occupied)
+- kod przypisywanej palety(pallet_code)
+Uwagi:
+- użytkownik wpisuje w pole id miejsca paletowego(place_id) do którego
+  chce przypisać paletę dla której is_assigned = True
+
+- użytkownik następnie wpisuje kod palety (pallet_code), którą chce przypisać
+   do wybranego w przed chwilą miejsca
+
+- pola działają na zasadzie wyszukiwarki (query), która ogranicza się
+  do bazy palet i wyszukuje tylko palety dla której status is_assigned = True
+
+- funkcja pomija wszelkie miejsca (place_id), które mają status is_occupied = True
+
+
+funkcja assign pallet ma:
+- wyszukiwać paletę po nazwie PL00000001 (przykład)
+- następnie przenosić do widoku palety (zawierającej opis)
+- widok zawiera również opcję przypisania do wolnego regału
+
+Stwórz system logowania

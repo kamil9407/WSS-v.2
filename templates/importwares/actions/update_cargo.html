@@ -1,0 +1,18 @@
+{% extends 'importwares/base.html' %}
+<!DOCTYPE html>
+
+{% block content %}
+<html>
+<head>
+    <title>Update Cargo</title>
+</head>
+<body>
+    <h1>Update Cargo: {{ cargo.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+    <a href="{% url 'ware_list' %}">Back to Ware list</a>
+</body>
+{% endblock %}

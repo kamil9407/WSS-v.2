@@ -1,0 +1,21 @@
+{% extends 'importwares/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{cargo.name }}</title>
+</head>
+<body>
+    <h1>{{ cargo.name }} {{cargo.category}}</h1>
+    <p>SKU: {{cargo.sku}} EAN: {{cargo.ean}}</p>
+    <p>{{ cargo.description }}</p>
+    <p>Supplier: {{cargo.supplier}}</p>
+    <p>Buy price: {{ cargo.buy_price }}</p>
+    <p>Sell price: {{ cargo.sell_price }}</p>
+    <p>Unit weight: {{cargo.unit_weight}}</p>
+    <p>Quantity: {{ cargo.imported_quantity }}</p>
+    <img src="{{ cargo.image.url }}" alt="{{ cargo.name }}">
+    
+    
+    <a href="{% url 'ware_list' %}" class="btn btn-primary">Back to List</a>
+</body>
+</html>

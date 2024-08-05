@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Report</title>
+    <style>
+        body { font-family: DejaVu Sans, sans-serif; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ware Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>EAN</th>
+                <th>SKU</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Buy Price</th>
+                <th>Sell Price</th>
+                <th>Quantity</th>
+                <th>Unit Weight</th>
+                <th>Image</th>
+                <th>Supplier</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ware in wares %}
+            <tr>
+                <td>{{ ware.id }}</td>
+                <td>{{ ware.name }}</td>
+                <td>{{ ware.ean }}</td>
+                <td>{{ ware.sku }}</td>
+                <td>{{ ware.category }}</td>
+                <td>{{ ware.description }}</td>
+                <td>{{ ware.buy_price }}</td>
+                <td>{{ ware.sale_price }}</td>
+                <td>{{ ware.quantity }}</td>
+                <td>{{ ware.unit_weight }}</td>
+                <td>Image: <img height="60px" width="70px" src="{{ ware.image.url }}" alt="{{ ware.name }}"></td>
+                <td>{{ ware.supplier }}</td>
+                <td>{{ ware.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

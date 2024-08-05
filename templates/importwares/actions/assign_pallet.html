@@ -1,0 +1,22 @@
+{% extends 'importwares/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Assign Pallet</title>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <h2>Assign Pallet</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="pid">Pallet PID:</label>
+                <input type="text" id="pid" name="pid" required>
+                <button type="submit">Assign</button>
+            </form>
+        </div>
+    </body>
+
+</html>
+{% endblock %}

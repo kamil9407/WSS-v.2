@@ -1,0 +1,47 @@
+{% extends 'importwares/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Rack Places</title>
+</head>
+<body>
+    <div class="container my-4">
+      <h1 class="my-4">Assigned pallets</h1>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        
+        {% for pallet in accepted %}
+        <div class="card" style="width: 18rem;">
+            
+            <div class="card-body">
+              <h5 class="card-title">{{pallet.cargo}}</h5>
+              
+              
+              
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><p>Cargo name: </p>{{pallet.cargo}}</li>
+              <li class="list-group-item"><p>Quantity: </p>{{pallet.quantity}}<p>pcs</p></li>
+              <li class="list-group-item"><p>PID: </p>{{pallet.pid}}</li>
+              <li class="list-group-item"><p>Unit weight: </p>{{pallet.u_weight}}<p>kg</p></li>
+              <li class="list-group-item"><p>Total weight: </p>{{pallet.total_weight}}<p>kg</p></li>
+              
+            </ul>
+            
+              
+          </div>
+        {% endfor %}
+        </div>
+      </div>       
+      
+    </div>
+    
+      </div>
+    </div>
+</body>
+</html>
+{% endblock %}
